@@ -11,9 +11,17 @@
 <body>
   <div class="modal" style="display: none">
     <div class="modal__container">
-      <img class="modal__image" src="">
-      <p class="modal__describtion"></p>
-      <p class="modal__price"></p>
+      <div class="modal__header">
+        <img src="./img/cross.svg" class="modal__close" onclick='handleClickOnCross()'>
+      </div>
+      <div class="modal__body">
+        <img class="modal__image" src="">
+        <p class="modal__describtion"></p>
+        <p class="modal__price"></p>
+      </div>
+      <div class="modal__footer">
+        <button class="modal__confirm">button</button>
+      </div>
     </div>
   </div>
   <div class="tabs">
@@ -29,7 +37,15 @@
 
 
     }
-    function handleClick(event){
+    function closeModal(){
+      const modal = document.getElementsByClassName('modal')[0].style = 'display:none'
+    }
+
+    function handleClickOnCross(){
+      closeModal()
+    }
+
+    function handleClickOnTabs(event){
       const elem = event.currentTarget
       openModal(elem.getElementsByClassName('tabs__image')[0].src, elem.getElementsByClassName('tabs__describtion')[0].innerHTML, elem.getElementsByClassName('tabs__price')[0].innerHTML)
     }
@@ -38,7 +54,7 @@
   const table = 'tabs'
   function createTab(where, name, src, describtion, price){
     const tab = document.createElement('div')
-    tab.addEventListener('click',handleClick)
+    tab.addEventListener('click',handleClickOnTabs)
     tab.className = `${where}__block`
     const img = document.createElement('img')
     img.src = src
