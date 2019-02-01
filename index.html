@@ -9,14 +9,28 @@
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <!--
-    Welcome to your first asset!
-
-    You could've noticed there is a link to Roboto font in the head.
-    You can use it in css by typing font-family: Roboto, sans-serif;
-    and you can customize it by using font-weight (400, 500 etc. - numbers in the link tag)
-
-    Good luck and have fun!
-  -->
+  <div class="tabs">
+  </div>
+    <script>
+  const table = 'tabs'
+  function createTab(name, src, describtion, price){
+    const tab = document.createElement('div')
+    tab.onclick = alert(1)
+    tab.className = name
+    const img = document.createElement('img')
+    img.src = src
+    const descr = document.createElement('p')
+    descr.innerHTML = describtion
+    const money = document.createElement('p')
+    money.innerHTML = price
+    tab.appendChild(img)
+    tab.appendChild(descr)
+    tab.appendChild(money)
+    document.getElementsByClassName(table)[0].appendChild(tab)
+  }
+  createTab('device','./img/device.svg','adsadsdasdasdasdasdasdas dasdas dsadasdas', '10$')
+  createTab('laptop','./img/laptop.svg','adsadsdasdasdasdasdasdas dasdas dsadasdas', '10$')
+  createTab('monitor','./img/monitor.svg','adsadsdasdasdasdasdasdas dasdas dsadasdas', '10$')
+  </script>
 </body>
 </html>
