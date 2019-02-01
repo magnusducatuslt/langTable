@@ -3,8 +3,8 @@ body{
 }
 .tabs {
 	background: white;
-	width: 500px;
-	height: 500px;
+	width: 550px;
+	height: 200px;
 	display:flex;
 	position: absolute;
 }
