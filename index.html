@@ -10,12 +10,13 @@
 </head>
 <body>
   <div class="substrate"></div>
-  <div class="modal" style="display: none">
+  <div class="modal">
     <div class="modal__container">
       <div class="modal__header">
         <img src="./img/cross.svg" class="modal__close" onclick='handleClickOnCross()'>
       </div>
       <div class="modal__body">
+        <label>Confirmation</label>
         <img class="modal__image" src="">
         <p class="modal__name"></p>
         <p class="modal__description"></p>
@@ -44,10 +45,6 @@
 
     }
     function showSubstate(){
-      //document.getElementsByClassName('substrate')[0].style.width =window.innerWidth;
-      //document.getElementsByClassName('substrate')[0].style.height = window.innerHeight;
-      document.getElementsByClassName('substrate')[0].style.width = '500px'
-      document.getElementsByClassName('substrate')[0].style.height = '600px'
       document.getElementsByClassName('substrate')[0].style.display = 'block'
     }
     function hideSubstrate(){
@@ -72,8 +69,12 @@
   const table = 'tabs'
   function createTab(where, nameDevice, src, description, price){
     const tab = document.createElement('div')
+    const body = document.createElement('div')
+    body.className =`${where}__body`
+    const footer = document.createElement('div')
+    footer.className = `${where}__footer`
     tab.addEventListener('click',handleClickOnTabs)
-    tab.className = `${where}__block`
+    tab.className = `${where}__container`
     const img = document.createElement('img')
     img.src = src
     img.className = `${where}__image`
@@ -86,10 +87,14 @@
     const money = document.createElement('p')
     money.innerHTML = price
     money.className = `${where}__price`
-    tab.appendChild(img)
-    tab.appendChild(name)
-    tab.appendChild(descr)
-    tab.appendChild(money)
+    
+    body.appendChild(img)
+    body.appendChild(name)
+    body.appendChild(descr)
+    body.appendChild(money)
+    tab.appendChild(body)
+    tab.appendChild(footer)
+    
     document.getElementsByClassName(where)[0].appendChild(tab)
   }
   createTab(table, 'MOBILE','./img/device.svg','adadsas 222 fffff', '11$')
