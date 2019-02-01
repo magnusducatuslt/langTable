@@ -6,20 +6,33 @@ body{
 	width: 500px;
 	height: 500px;
 	display:flex;
+	position: absolute;
 }
 .tabs__block{
-	width: 33%
+	width: 33%;
 }
-
 .modal {
-	width: 200px;
-	height: 300px;
+		position: absolute;
+	z-index: 50;
+	opacity: 1;
+	width: 300px;
+	height:400px;
+}
+.substrate {
+	background: black;
+	position: absolute;
+	opacity: 0.4;
+	z-index: 10;
 
 }
 .modal__header {
 	width: 10px;
 	height: 10px;
 }
+.modal__container {
+	background: white;
+}
+
 .tabs__block:hover {
 	background: #F5F5F5;
 }

@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
+  <div class="substrate"></div>
   <div class="modal" style="display: none">
     <div class="modal__container">
       <div class="modal__header">
@@ -37,17 +38,29 @@
 
 
     }
+    function showSubstate(){
+      //document.getElementsByClassName('substrate')[0].style.width =window.innerWidth;
+      //document.getElementsByClassName('substrate')[0].style.height = window.innerHeight;
+      document.getElementsByClassName('substrate')[0].style.width = '500px'
+      document.getElementsByClassName('substrate')[0].style.height = '600px'
+      document.getElementsByClassName('substrate')[0].style.display = 'block'
+    }
+    function hideSubstrate(){
+      document.getElementsByClassName('substrate')[0].style.display = 'none'
+    }
     function closeModal(){
       const modal = document.getElementsByClassName('modal')[0].style = 'display:none'
     }
 
     function handleClickOnCross(){
       closeModal()
+      hideSubstrate()
     }
 
     function handleClickOnTabs(event){
       const elem = event.currentTarget
       openModal(elem.getElementsByClassName('tabs__image')[0].src, elem.getElementsByClassName('tabs__describtion')[0].innerHTML, elem.getElementsByClassName('tabs__price')[0].innerHTML)
+      showSubstate()
     }
   </script>
     <script>
