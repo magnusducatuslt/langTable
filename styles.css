@@ -5,4 +5,8 @@ body{
 	background: white;
 	width: 500px;
 	height: 500px;
+	display:flex;
+}
+.tabs__block{
+	width: 33%
 }

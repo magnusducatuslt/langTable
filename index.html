@@ -9,28 +9,54 @@
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
+  <div class="modal" style="display: none">
+    <div class="modal__container">
+      <img class="modal__image" src="">
+      <p class="modal__describtion"></p>
+      <p class="modal__price"></p>
+    </div>
+  </div>
   <div class="tabs">
   </div>
+  <script>
+
+    function openModal(src, describtion, price){
+      const modal = document.getElementsByClassName('modal')[0]
+      modal.style = 'display:block'
+      modal.getElementsByClassName('modal__image')[0].src = src
+      modal.getElementsByClassName('modal__describtion')[0].innerHTML = describtion
+      modal.getElementsByClassName('modal__price')[0].innerHTML = price
+
+
+    }
+    function handleClick(event){
+      const elem = event.currentTarget
+      openModal(elem.getElementsByClassName('tabs__image')[0].src, elem.getElementsByClassName('tabs__describtion')[0].innerHTML, elem.getElementsByClassName('tabs__price')[0].innerHTML)
+    }
+  </script>
     <script>
   const table = 'tabs'
-  function createTab(name, src, describtion, price){
+  function createTab(where, name, src, describtion, price){
     const tab = document.createElement('div')
-    tab.onclick = alert(1)
-    tab.className = name
+    tab.addEventListener('click',handleClick)
+    tab.className = `${where}__block`
     const img = document.createElement('img')
     img.src = src
+    img.className = `${where}__image`
     const descr = document.createElement('p')
     descr.innerHTML = describtion
+    descr.className = `${where}__describtion`
     const money = document.createElement('p')
     money.innerHTML = price
+    money.className = `${where}__price`
     tab.appendChild(img)
     tab.appendChild(descr)
     tab.appendChild(money)
-    document.getElementsByClassName(table)[0].appendChild(tab)
+    document.getElementsByClassName(where)[0].appendChild(tab)
   }
-  createTab('device','./img/device.svg','adsadsdasdasdasdasdasdas dasdas dsadasdas', '10$')
-  createTab('laptop','./img/laptop.svg','adsadsdasdasdasdasdasdas dasdas dsadasdas', '10$')
-  createTab('monitor','./img/monitor.svg','adsadsdasdasdasdasdasdas dasdas dsadasdas', '10$')
+  createTab(table, 'device','./img/device.svg','adadsas 222 fffff', '11$')
+  createTab(table, 'laptop','./img/laptop.svg','adsadsdasdasdasdasdasdas 333 dsadasdas', '12$')
+  createTab(table, 'monitor','./img/monitor.svg','adsadsdasdasdasdasdasdas 4444 dsadasdas', '13$')
   </script>
 </body>
 </html>
