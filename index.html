@@ -1,105 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Loop 1 - Step 1</title>
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css" />
-</head>
-<body>
-  <div class="substrate"></div>
-  <div class="modal">
-    <div class="modal__container">
-      <div class="modal__header">
-        <img src="./img/cross.svg" class="modal__close" onclick='handleClickOnCross()'>
-      </div>
-      <div class="modal__body">
-        <label>Confirmation</label>
-        <img class="modal__image" src="">
-        <p class="modal__name"></p>
-        <p class="modal__description"></p>
-        <p class="modal__price"></p>
-      </div>
-      <div class="modal__footer">
-        <button class="modal__confirm">button</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Loop 1 - Step 1</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,500,700"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <div class="substrate"></div>
+    <div class="modal">
+      <div class="modal__container">
+        <div class="modal__cross">
+          <img
+            height="15px"
+            width="15px"
+            src="./img/cross.svg"
+            class="modal__close"
+            onclick="handleClickOnCross()"
+          />
+        </div>
+        <div class="modal__title">
+          <label>Confirmation</label>
+        </div>
+        <div class="modal__block">
+          <div class="modal__header"><img class="modal__image" src="" /></div>
+          <div class="modal__body">
+            <p class="modal__name"></p>
+            <p class="modal__description"></p>
+            <p class="modal__price"></p>
+          </div>
+          <div class="modal__footer">
+            <button class="modal__confirm">Confirm and pay</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="tabs">
-  </div>
-  <script>
-    document.getElementsByTagName('body')[0].addEventListener('click',(event)=>{
-      console.log(event.currentTarget)
-      console.log(event.target)
-    })
-    function openModal( src, name, description, price){
-      const modal = document.getElementsByClassName('modal')[0]
-      modal.style = 'display:block'
-      modal.getElementsByClassName('modal__image')[0].src = src
-      modal.getElementsByClassName('modal__name')[0].innerHTML = name
-      modal.getElementsByClassName('modal__description')[0].innerHTML = description
-      modal.getElementsByClassName('modal__price')[0].innerHTML = price
-
-
-    }
-    function showSubstate(){
-      document.getElementsByClassName('substrate')[0].style.display = 'block'
-    }
-    function hideSubstrate(){
-      document.getElementsByClassName('substrate')[0].style.display = 'none'
-    }
-    function closeModal(){
-      const modal = document.getElementsByClassName('modal')[0].style = 'display:none'
-    }
-
-    function handleClickOnCross(){
-      closeModal()
-      hideSubstrate()
-    }
-
-    function handleClickOnTabs(event){
-      const elem = event.currentTarget
-      openModal(elem.getElementsByClassName('tabs__image')[0].src, elem.getElementsByClassName('tabs__name')[0].innerHTML, elem.getElementsByClassName('tabs__description')[0].innerHTML, elem.getElementsByClassName('tabs__price')[0].innerHTML)
-      showSubstate()
-    }
-  </script>
+    <div class="tabs">
+      <div class="tabs__container"></div>
+    </div>
     <script>
-  const table = 'tabs'
-  function createTab(where, nameDevice, src, description, price){
-    const tab = document.createElement('div')
-    const body = document.createElement('div')
-    body.className =`${where}__body`
-    const footer = document.createElement('div')
-    footer.className = `${where}__footer`
-    tab.addEventListener('click',handleClickOnTabs)
-    tab.className = `${where}__container`
-    const img = document.createElement('img')
-    img.src = src
-    img.className = `${where}__image`
-    const name = document.createElement('p')
-    name.className = `${where}__name`
-    name.innerHTML = nameDevice
-    const descr = document.createElement('p')
-    descr.innerHTML = description
-    descr.className = `${where}__description`
-    const money = document.createElement('p')
-    money.innerHTML = price
-    money.className = `${where}__price`
-    
-    body.appendChild(img)
-    body.appendChild(name)
-    body.appendChild(descr)
-    body.appendChild(money)
-    tab.appendChild(body)
-    tab.appendChild(footer)
-    
-    document.getElementsByClassName(where)[0].appendChild(tab)
-  }
-  createTab(table, 'MOBILE','./img/device.svg','adadsas 222 fffff', '11$')
-  createTab(table, 'DESKTOP','./img/laptop.svg','adsadsdasdasdasdasdasdas 333 dsadasdas', '12$')
-  createTab(table, 'TV','./img/monitor.svg','adsadsdasdasdasdasdasdas 4444 dsadasdas', '13$')
-  </script>
-</body>
+      document
+        .getElementsByTagName("body")[0]
+        .addEventListener("click", event => {
+          console.log(event.currentTarget);
+          console.log(event.target);
+        });
+      function openModal(src, name, description, price) {
+        const modal = document.getElementsByClassName("modal")[0];
+        modal.style = "display:block";
+        modal.getElementsByClassName("modal__image")[0].src = src;
+        modal.getElementsByClassName("modal__name")[0].innerHTML = name;
+        modal.getElementsByClassName(
+          "modal__description"
+        )[0].innerHTML = description;
+        modal.getElementsByClassName("modal__price")[0].innerHTML = price;
+      }
+      function showSubstate() {
+        document.getElementsByClassName("substrate")[0].style.display = "block";
+      }
+      function hideSubstrate() {
+        document.getElementsByClassName("substrate")[0].style.display = "none";
+      }
+      function closeModal() {
+        const modal = (document.getElementsByClassName("modal")[0].style =
+          "display:none");
+      }
+
+      function handleClickOnCross() {
+        closeModal();
+        hideSubstrate();
+      }
+
+      function handleClickOnTabs(event) {
+        const elem = event.currentTarget;
+        openModal(
+          elem.getElementsByClassName("tabs__image")[0].src,
+          elem.getElementsByClassName("tabs__name")[0].innerHTML,
+          elem.getElementsByClassName("tabs__description")[0].innerHTML,
+          elem.getElementsByClassName("tabs__price")[0].innerHTML
+        );
+        showSubstate();
+      }
+    </script>
+    <script>
+      const table = "tabs";
+      function createTab(where, nameDevice, src, description, price) {
+        const tab = document.createElement("div");
+        const body = document.createElement("div");
+        const header = document.createElement("div");
+        header.className = `${where}__header`;
+        body.className = `${where}__body`;
+
+        tab.addEventListener("click", handleClickOnTabs);
+        tab.className = `${where}__block`;
+
+        const img = document.createElement("img");
+        img.src = src;
+        img.className = `${where}__image`;
+        img.style.height = "60%";
+
+        const name = document.createElement("p");
+        name.className = `${where}__name`;
+        name.innerHTML = `<strong>${nameDevice}</strong>`;
+
+        const descr = document.createElement("p");
+        descr.innerHTML = description;
+        descr.className = `${where}__description`;
+
+        const money = document.createElement("p");
+        money.innerHTML = `<span class="${where}__price-symb">$</span><strong><span class="${where}__price-value">${price}</span></strong><span> / month</span>`;
+        money.className = `${where}__price`;
+
+        header.appendChild(img);
+
+        body.appendChild(name);
+        body.appendChild(descr);
+        body.appendChild(money);
+
+        tab.appendChild(header);
+        tab.appendChild(body);
+
+        document
+          .getElementsByClassName(where + "__container")[0]
+          .appendChild(tab);
+      }
+      createTab(
+        table,
+        "MOBILE",
+        "./img/device.svg",
+        "Get notifictations about new releases in our mobile app",
+        "11"
+      );
+      createTab(
+        table,
+        "DESKTOP",
+        "./img/laptop.svg",
+        "Enjoy new episodes on your laptop, in browser with our web service, which supports all the platforms.",
+        "12"
+      );
+      createTab(
+        table,
+        "TV",
+        "./img/monitor.svg",
+        "Whatch your favorite seriese at home on large screen with our TV application.",
+        "13"
+      );
+    </script>
+  </body>
 </html>
