@@ -48,8 +48,10 @@
       document
         .getElementsByTagName("body")[0]
         .addEventListener("click", event => {
-          console.log(event.currentTarget);
-          console.log(event.target);
+          if (event.target.className === "substrate") {
+            hideSubstrate();
+            closeModal();
+          }
         });
       function openModal(src, name, description, price) {
         const modal = document.getElementsByClassName("modal")[0];
@@ -60,12 +62,16 @@
           "modal__description"
         )[0].innerHTML = description;
         modal.getElementsByClassName("modal__price")[0].innerHTML = price;
+        const tabs = document.getElementsByClassName("tabs")[0];
+        tabs.style = "opacity:0.4";
       }
       function showSubstate() {
-        document.getElementsByClassName("substrate")[0].style.display = "block";
+        document.getElementsByClassName("substrate")[0].style.opacity = "0.4";
+        document.getElementsByClassName("tabs")[0].style.opacity = "0.4";
       }
       function hideSubstrate() {
-        document.getElementsByClassName("substrate")[0].style.display = "none";
+        document.getElementsByClassName("substrate")[0].style.opacity = "1";
+        document.getElementsByClassName("tabs")[0].style.opacity = "1";
       }
       function closeModal() {
         const modal = (document.getElementsByClassName("modal")[0].style =
